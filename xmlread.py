@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
-files = [str(p) for p in Path("LIDC-XML-only/tcia-lidc-xml").glob("**/*.xml")]
+files = [str(p) for p in Path("data/lidc-xml").glob("**/*.xml")]
 
 def prueba():
 	print(files)
