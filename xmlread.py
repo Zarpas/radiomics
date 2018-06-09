@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
-files = [str(p) for p in Path("LIDC-XML-only/tcia-lidc-xml").glob("**/*.xml")]
+files = [str(p) for p in Path("data/lidc-xml").glob("**/*.xml")]
 
 def prueba():
 	print(files)
@@ -23,6 +23,7 @@ def leer(fichero):
 			n = {}
 			n['noduleID'] = nodule.find('{http://www.nih.gov}noduleID').text
 			n['characteristics'] = {}
+			n['UID'] = UID
 			for carac in nodule.iter('{http://www.nih.gov}characteristics'):
 				try:
 					for cha in charac:
@@ -37,7 +38,6 @@ def leer(fichero):
 				for edgemap in roi.iter('{http://www.nih.gov}edgeMap'):
 					coords.append((int(edgemap.find('{http://www.nih.gov}xCoord').text), int(edgemap.find('{http://www.nih.gov}yCoord').text)))
 				n['rois'][zCoord].append({
-					'UID': UID,
 					'coords': coords,
 					'inclusion': inclusion
 					})
