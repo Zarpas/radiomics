@@ -72,7 +72,6 @@ def leer(fichero):
 					'inclusion': inclusion
 					})
 			nodules.append(n)
-	print(nodules)
 
 
 
