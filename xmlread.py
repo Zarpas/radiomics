@@ -37,7 +37,7 @@ def leer(fichero):
 	#]
 
 	charac = [ 'subtlety', 'internalStructure', 'calcification', 'sphericity', 'margin', 'lobulation', 'spiculation', 'texture', 'malignancy']
-
+	nodules = []
 	for reading in tree.iter('{http://www.nih.gov}readingSession'):
 		#print('dentro session')
 		for nodule in reading.iter('{http://www.nih.gov}unblindedReadNodule'):
@@ -71,7 +71,8 @@ def leer(fichero):
 					'coords': coords,
 					'inclusion': inclusion
 					})
-
+			nodules.append(n)
+	print(nodules)
 
 
 
